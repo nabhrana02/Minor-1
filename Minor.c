@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<GLUT/glut.h>
+#include<GL/glut.h>
 
 //Interface 1 Design Display.
 // Om PAndey push your function here.*(Only the display 		function).
@@ -22,12 +22,12 @@
 void Interface1()
 {
 
-    glClear(GL_COLOR_BUFFER_BIT);       // Clear display window
+    // Clear display window
 
-    //COORDINATES ORDER:   Top Left --> Bottom Left --> Bottom Right --> Top Right
+//COORDINATES ORDER:   Top Left --> Bottom Left --> Bottom Right --> Top Right
 
-    // TOP BOX FOR HEADING/NAME/TITLE
-    //OUTER BOX
+// TOP BOX FOR HEADING/NAME/TITLE
+//OUTER BOX
     glColor3f(0.2, 0.2, 0.5);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(50, 713);
@@ -194,40 +194,48 @@ void Interface1()
 }
 
 void display() {
-	Interface1();
-
-
+    glClear(GL_COLOR_BUFFER_BIT);
+    Interface1();
+    glFlush();
+    glutSwapBuffers();
 }
 
 
 
 void reshaping(int w, int h) {
-	glViewport(0, 0, w, h);
-	gluOrtho2D(0, 1080, 0, 720);
+    glViewport(0, 0, w, h);
+
+    glMatrixMode(GL_PROJECTION);
+
+    glLoadIdentity();
+
+    gluOrtho2D(0, 1080, 0, 720);
+
+    glMatrixMode(GL_MODELVIEW);
 
 }
 
 
 
 void init() {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
 }
 
 
 
 
 int main(int argc, char** argv) {
-	glutInit(&argc, argv);
+    glutInit(&argc, argv);
 
-	glutInitWindowPosition(0, 0);
-	glutInitWindowSize(1080, 720);
+    glutInitWindowPosition(0, 0);
+    glutInitWindowSize(1080, 720);
 
-	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-	glutCreateWindow("Box'em Up");
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+    glutCreateWindow("Box'em Up");
 
-	glutDisplayFunc(display);
-	glutReshapeFunc(reshaping);
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshaping);
 
-	init();
-	glutMainLoop();
+    init();
+    glutMainLoop();
 }
