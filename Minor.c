@@ -1,10 +1,27 @@
 #include<stdio.h>
 #include<GLUT/glut.h>
 
+//Interface 1 Design Display.
+// Om PAndey push your function here.*(Only the display 		function).
+
+//Input Function.
+//Himani Push your function here.
+
+
+
+//Processing upon the input.
+//Nabh push your code here
+
+
+
+//Output based on User's Input.
+//Shashank push your code here.
+
+
+
 void Interface1() {
 
-	//Interface 1 Design Display.
-	// Om PAndey push your function here.*(Only the display function).
+
 
 
 }
