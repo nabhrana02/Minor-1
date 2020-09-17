@@ -1,6 +1,6 @@
-#Minor 1 
+# Minor 1 
 
-#Box’em up with OPENGL:
+# Box’em up with OPENGL:
 Our goal is to create a multiplayer game using Opengl that our generation has played a lot during our boring school days.  
 
 Interface:
