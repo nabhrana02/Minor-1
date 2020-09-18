@@ -18,11 +18,121 @@
 //Shashank push your code here.
 
 
+void reshaping(int w, int h) {
+    glViewport(0, 0, w, h);
 
-void Interface1()
-{
+    glMatrixMode(GL_PROJECTION);
 
-    // Clear display window
+    glLoadIdentity();
+
+    gluOrtho2D(0, 1080, 0, 720);
+
+    glMatrixMode(GL_MODELVIEW);
+
+}
+
+
+
+void init() {
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+}
+
+
+
+
+
+// driver function for the text drawing which will call the drawStrokeText multiple times with all the values
+void drawingText(){
+
+    // the coordinates in the comments will be for the lower left corner of the designated box. The first one is still done
+    // to explain things
+
+
+    // for the main game name window
+    // 106 and 587  -> the coordinates for the lower left corner of the box
+    char str[] = "Box'em Up";
+    glColor3f(1.0,0.0,0.0);
+    drawStrokeText(str, 112, 610, 7, 9, 0.67, 0.67);
+
+
+    // grid
+
+
+    // for the grid
+    // 85 and 407
+    char str1[] = "Grid";
+    glColor3f(0.9,0,0.4);
+    drawStrokeText(str1, 88, 430, 6, 4, 0.4, 0.4);
+
+    // grid options
+    char gridOptions[][5] = {"10X10","12X12","15X15","18X18"};
+
+    // for the first grid option
+    // 230 and 420
+    drawStrokeText(gridOptions[0],232, 436, 4,5, 0.25, 0.25);
+
+    // for the second grid option
+    // 350 and 420
+    drawStrokeText(gridOptions[1],352, 436, 4,5, 0.25, 0.25);
+
+    // for the third grid option
+    // 470 and 420
+    drawStrokeText(gridOptions[2],472, 436, 4,5, 0.25, 0.25);
+
+    // for the fourth grid option
+    // 590 and 420
+    drawStrokeText(gridOptions[3],592, 436, 4,5, 0.25, 0.25);
+
+
+
+    //players
+
+
+    // for players
+    // 325 and 347 -> the coordinates for the left andar wala angular part
+    char str2[] = "Players";
+    glColor3f(0.0,0.2,0.8);
+    drawStrokeText(str2, 328, 335, 5, 7, 0.32, 0.32);
+
+
+
+    // Start
+    // 800 and 250 -> left corner of the start button
+    char str3[] = "START";
+    glColor3f(1.0,1.0,1.0);
+    drawStrokeText(str3, 820, 230, 7, 5, 0.4, 0.4);
+
+
+}
+
+
+
+// This is shashank and I am gonna add a text function here for drawing the text in the option boxes
+void drawStrokeText(char string[], int x, int y,int linewidth, int length, double scaleA, double scaleB){
+
+    int c;
+    glPushMatrix();
+    // width of the line drawn on the screen
+    glLineWidth(linewidth);
+    // position of the text
+    glTranslatef(x, y, 0);
+    // size of the text
+    glScalef(scaleA, scaleB, 0.0);
+
+    // for the actual drawing of the characters
+    for(c=0; c<length; c++){
+        // we iterate through the string character by character and display it on the screen
+        glutStrokeCharacter(GLUT_STROKE_ROMAN, string[c]);
+
+    }
+    glPopMatrix();
+
+    glutReshapeFunc(reshaping);
+
+}
+
+
+void Interface1(){
 
 //COORDINATES ORDER:   Top Left --> Bottom Left --> Bottom Right --> Top Right
 
@@ -187,39 +297,26 @@ void Interface1()
     glColor3f(1.0, 0.0, 0.0);
     glVertex2i(1000, 250);
     glEnd();
-
-
-    //END
-    glFlush();
 }
 
+
+
+// the main display function where all the other functions will be called
 void display() {
+    // clear the buffer
     glClear(GL_COLOR_BUFFER_BIT);
+    // main interface function by OM with all the shapes
     Interface1();
-    glFlush();
+
+    // text function by SHASHANK to draw the text on the screen
+    drawingText();
+
+    // put everything on the screen
     glutSwapBuffers();
 }
 
 
 
-void reshaping(int w, int h) {
-    glViewport(0, 0, w, h);
-
-    glMatrixMode(GL_PROJECTION);
-
-    glLoadIdentity();
-
-    gluOrtho2D(0, 1080, 0, 720);
-
-    glMatrixMode(GL_MODELVIEW);
-
-}
-
-
-
-void init() {
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-}
 
 
 
