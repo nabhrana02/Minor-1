@@ -52,7 +52,7 @@ void drawingText(){
     // 106 and 587  -> the coordinates for the lower left corner of the box
     char str[] = "Box'em Up";
     glColor3f(1.0,0.0,0.0);
-    drawStrokeText(str, 112, 610, 7, 9, 0.67, 0.67);
+    drawStrokeText(str, 112, 610, 10, 9, 0.67, 0.67);
 
 
     // grid
@@ -94,6 +94,26 @@ void drawingText(){
     glColor3f(0.0,0.2,0.8);
     drawStrokeText(str2, 328, 335, 5, 7, 0.32, 0.32);
 
+    //player name fields
+    char playernumber[][5] = {"P1:", "P2:", "P3:", "P4:"};
+
+
+    // first box
+    // 100 and 200
+    glColor3f(0.6,0.2,0.4);
+    drawStrokeText(playernumber[0], 102, 222, 3, 3, 0.2, 0.2);
+
+    // second box
+    // 495 and 200
+    drawStrokeText(playernumber[1], 497, 222, 3, 3, 0.2, 0.2);
+
+    // third box
+    // 100 and 67
+    drawStrokeText(playernumber[2], 102, 89, 3, 3, 0.2, 0.2);
+
+    // fourth box
+    // 495 and 67
+    drawStrokeText(playernumber[3], 497, 89, 3, 3, 0.2, 0.2);
 
 
     // Start
