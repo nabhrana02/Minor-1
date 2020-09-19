@@ -1,7 +1,6 @@
 //Function where Input will be processed
 void Process() {
 
-    bool First = false, Second = false;
 
     for (int i = 0; i < 4; i++) {
         if (First == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi < Cord[i][3]) {

@@ -8,6 +8,7 @@ double Selected1[4];
 double Selected2[4];
 int Set_Interface = 1;
 int xi = Input[0], yi = Input[1];
+bool First = false, Second = false;
 
 
 //Defining all funcitons.
@@ -88,7 +89,7 @@ void display() {
 
         display_option();
         glColor3f(0.0, 1.0, 0.0);
-        glPointSize(50.0);
+        glPointSize(20.0);
         glBegin(GL_POINTS);
         glVertex2d(xi, yi);
         glEnd();
@@ -132,7 +133,7 @@ void init() {
 //Function where Input will be processed
 void Process() {
     
-    bool First = false, Second = false;
+    
 
     for (int i = 0; i < 4; i++) {
         if (First == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi<Cord[i][3]) {
