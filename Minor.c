@@ -5,20 +5,23 @@
 // Om PAndey push your function here.*(Only the display 		function).
 // OM SAYS: DONE BELOW
 //Input Function.
-//Himani Push your function here.
+
 void mouse(int button, int state, int x, int y)
-{
+{    
+    //either left click or right click
     switch (button)
     {
-    case GLUT_LEFT_BUTTON:
-    {
-        Input[0] = x;
+    case GLUT_LEFT_BUTTON:              
+    {    
+        //storing the coordinates in the array of left click
+        Input[0] = x;                    
         Input[1] = 720 - y;
 
     }
 
     case GLUT_RIGHT_BUTTON:
-    {
+    {   
+        //storing the coordinates of right click in the array
         Input[0] = x;
         Input[1] = 720 - y;
     }
