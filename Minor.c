@@ -6,7 +6,25 @@
 // OM SAYS: DONE BELOW
 //Input Function.
 //Himani Push your function here.
+void mouse(int button, int state, int x, int y)
+{
+    switch (button)
+    {
+    case GLUT_LEFT_BUTTON:
+    {
+        Input[0] = x;
+        Input[1] = 720 - y;
 
+    }
+
+    case GLUT_RIGHT_BUTTON:
+    {
+        Input[0] = x;
+        Input[1] = 720 - y;
+    }
+    glutPostRedisplay();
+    }
+}
 
 
 //Processing upon the input.
@@ -351,6 +369,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Box'em Up");
 
     glutDisplayFunc(display);
+    glutMouseFunc(mouse);
     glutReshapeFunc(reshaping);
 
     init();
