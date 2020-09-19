@@ -7,20 +7,20 @@
 //Input Function.
 
 void mouse(int button, int state, int x, int y)
-{    
+{
     //either left click or right click
     switch (button)
     {
-    case GLUT_LEFT_BUTTON:              
-    {    
+    case GLUT_LEFT_BUTTON:
+    {
         //storing the coordinates in the array of left click
-        Input[0] = x;                    
+        Input[0] = x;
         Input[1] = 720 - y;
 
     }
 
     case GLUT_RIGHT_BUTTON:
-    {   
+    {
         //storing the coordinates of right click in the array
         Input[0] = x;
         Input[1] = 720 - y;
@@ -37,6 +37,24 @@ void mouse(int button, int state, int x, int y)
 
 //Output based on User's Input.
 //Shashank push your code here.
+void display_option(int selected1[], int selected2[]){
+
+    glColor3f(1.0,1.0,1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(((selected1[2]-selected1[0])/2)-12, selected1[3]+15);
+    glVertex2f(((selected1[2]-selected1[0])/2)+12, selected1[3]+15);
+    glVertex2f((selected1[2]-selected1[0])/2, selected1[3]+5);
+    glEnd();
+
+    glBegin(GL_Polygon);
+    glVertex2f(((selected2[2]-selected2[0])/2)-12, selected2[3]+15);
+    glVertex2f(((selected2[2]-selected2[0])/2)+12, selected2[3]+15);
+    glVertex2f((selected2[2]-selected2[0])/2, selected2[3]+5);
+    glEnd();
+
+}
+
+
 
 
 void reshaping(int w, int h) {
@@ -351,6 +369,9 @@ void display() {
 
     // text function by SHASHANK to draw the text on the screen
     drawingText();
+
+    // highlighting the option user selected
+    display_option(int selected1[], int selected2[]);
 
     // put everything on the screen
     glutSwapBuffers();
