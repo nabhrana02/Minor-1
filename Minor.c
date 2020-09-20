@@ -152,7 +152,7 @@ void Process() {
         }
     }
     
-    if (xi > Cord[8][0] && xi < Cord[8][2] && yi > Cord[8][1] && yi < Cord[8][3]) {
+    if ( First == true && Second == true && xi > Cord[8][0] && xi < Cord[8][2] && yi > Cord[8][1] && yi < Cord[8][3]) {
         Set_Interface = 2;
         
     }
