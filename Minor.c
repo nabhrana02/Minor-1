@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include<GLUT/glut.h>
+#include<GL/glut.h>
+#include<stdbool.h>
 
 //Defining global variables.
 double Input[2] = { -50, -50 };
@@ -7,7 +8,8 @@ double Cord[9][4];
 double Selected1[4];
 double Selected2[4];
 int Set_Interface = 1;
-int xi = Input[0], yi = Input[1];
+int xi;
+int  yi;
 bool First = false, Second = false;
 
 
@@ -65,11 +67,11 @@ void mouse(int button, int state, int x, int y)
         Input[1] = 720 - y;
         yi = Input[1];
      }
-     
+
     }
-    
+
     glutPostRedisplay();
-    
+
 }
 
 
@@ -77,7 +79,7 @@ void mouse(int button, int state, int x, int y)
 // the main display function where all the other functions will be called
 void display() {
     // clear the buffer
-    
+
         // main interface function by OM with all the shapes
     if(Set_Interface == 1)
         {
@@ -101,7 +103,7 @@ void display() {
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glFlush();
-        
+
     }
     glFlush();
     }
@@ -132,8 +134,8 @@ void init() {
 
 //Function where Input will be processed
 void Process() {
-    
-    
+
+
 
     for (int i = 0; i < 4; i++) {
         if (First == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi<Cord[i][3]) {
@@ -151,10 +153,10 @@ void Process() {
             Second = true;
         }
     }
-    
+
     if ( First == true && Second == true && xi > Cord[8][0] && xi < Cord[8][2] && yi > Cord[8][1] && yi < Cord[8][3]) {
         Set_Interface = 2;
-        
+
     }
 }
 
@@ -363,10 +365,10 @@ void Interface1() {
     glVertex2i(330, 480);
     glEnd();
 
-    Cord[0][0] = { 230 };
-    Cord[0][1] = { 420 };
-    Cord[0][2] = { 330 };
-    Cord[0][3] = { 480 };
+    Cord[0][0] = 230;
+    Cord[0][1] =  420 ;
+    Cord[0][2] =  330 ;
+    Cord[0][3] =  480 ;
 
     // OPTION NO. #02
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -377,10 +379,10 @@ void Interface1() {
     glVertex2i(450, 480);
     glEnd();
 
-    Cord[1][0] = { 350 };
-    Cord[1][1] = { 420 };
-    Cord[1][2] = { 450 };
-    Cord[1][3] = { 480 };
+    Cord[1][0] =  350 ;
+    Cord[1][1] =  420 ;
+    Cord[1][2] =  450 ;
+    Cord[1][3] =  480 ;
 
     // OPTION NO. #03
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -391,10 +393,10 @@ void Interface1() {
     glVertex2i(570, 480);
     glEnd();
 
-    Cord[2][0] = { 470 };
-    Cord[2][1] = { 420 };
-    Cord[2][2] = { 570 };
-    Cord[2][3] = { 480 };
+    Cord[2][0] =  470 ;
+    Cord[2][1] =  420 ;
+    Cord[2][2] =  570 ;
+    Cord[2][3] =  480 ;
 
     // OPTION NO. #04
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -405,10 +407,10 @@ void Interface1() {
     glVertex2i(690, 480);
     glEnd();
 
-    Cord[3][0] = { 590 };
-    Cord[3][1] = { 420 };
-    Cord[3][2] = { 690 };
-    Cord[3][3] = { 480 };
+    Cord[3][0] =  590 ;
+    Cord[3][1] =  420 ;
+    Cord[3][2] =  690 ;
+    Cord[3][3] =  480 ;
 
 
     // PLAYER SELECTION:
@@ -433,10 +435,10 @@ void Interface1() {
     glVertex2i(300, 133);
     glEnd();
 
-    Cord[6][0] = { 100 };
-    Cord[6][1] = { 67 };
-    Cord[6][2] = { 300 };
-    Cord[6][3] = { 133 };
+    Cord[6][0] =  100 ;
+    Cord[6][1] =  67 ;
+    Cord[6][2] =  300 ;
+    Cord[6][3] =  133 ;
 
     // Player #01  ( TOP LEFT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -447,10 +449,10 @@ void Interface1() {
     glVertex2i(300, 267);
     glEnd();
 
-    Cord[4][0] = { 100 };
-    Cord[4][1] = { 200 };
-    Cord[4][2] = { 300 };
-    Cord[4][3] = { 267 };
+    Cord[4][0] = 100 ;
+    Cord[4][1] =  200 ;
+    Cord[4][2] =  300 ;
+    Cord[4][3] =  267;
 
     // Player #04  ( BOTTOM RIGHT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -462,10 +464,10 @@ void Interface1() {
     glEnd();
 
 
-    Cord[7][0] = { 495 };
-    Cord[7][1] = { 67 };
-    Cord[7][2] = { 695 };
-    Cord[7][3] = { 133 };
+    Cord[7][0] =  495 ;
+    Cord[7][1] =  67 ;
+    Cord[7][2] =  695 ;
+    Cord[7][3] =  133 ;
 
     // Player #02  ( TOP RIGHT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -476,10 +478,10 @@ void Interface1() {
     glVertex2i(695, 267);
     glEnd();
 
-    Cord[5][0] = { 495 };
-    Cord[5][1] = { 200 };
-    Cord[5][2] = { 695 };
-    Cord[5][3] = { 267 };
+    Cord[5][0] =  495 ;
+    Cord[5][1] =  200 ;
+    Cord[5][2] =  695 ;
+    Cord[5][3] =  267 ;
 
 
     // START BUTTON
@@ -498,8 +500,8 @@ void Interface1() {
     glVertex2i(1000, 250);
     glEnd();
 
-    Cord[8][0] = { 800 };
-    Cord[8][1] = { 150 };
-    Cord[8][2] = { 1000 };
-    Cord[8][3] = { 350 };
+    Cord[8][0] =  800 ;
+    Cord[8][1] =  150 ;
+    Cord[8][2] =  1000;
+    Cord[8][3] =  350 ;
 }
