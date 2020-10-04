@@ -17,7 +17,7 @@ double LineCord[200][4];
 double SelOption[200][4];
 double Points[90][4];
 int n = 0, q = 0;
-bool top1, top2, bottom1, bottom2, ver1, ver2, left1, left2,right1, right2, hor1, hor2;
+bool top1, top2, bottom1, bottom2, ver1, ver2, left1, left2, right1, right2, hor1, hor2;
 int count[4];
 int player = 0;
 int point;
@@ -149,7 +149,7 @@ void reshaping(int w, int h) {
 }
 
 void init() {
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClearColor(0.6, 0.8, 0.9, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -201,9 +201,9 @@ void drawingText() {
 
     // for the main game name window
     // 106 and 587  -> the coordinates for the lower left corner of the box
-    char str[] = "Box'em Up";
-    glColor3f(1.0, 0.0, 0.0);
-    drawStrokeText(str, 112, 610, 10, 9, 0.67, 0.67);
+    char str[] = "Box 'em Up";
+    glColor3f(0.7, 0.1, 0.1);
+    drawStrokeText(str, 270, 550, 10, 10, 0.67, 0.67);
 
 
     // grid
@@ -211,28 +211,28 @@ void drawingText() {
 
     // for the grid
     // 85 and 407
-    char str1[] = "Grid";
-    glColor3d(0.9, 0.0, 0.4);
-    drawStrokeText(str1, 88, 430, 6, 4, 0.4, 0.4);
+    char str1[] = "Grid: ";
+    glColor3d(0.7, 0.0, 0.4);
+    drawStrokeText(str1, 88, 430, 6, 6, 0.5, 0.5);
 
     // grid options
-    char gridOptions[][8] = { "small","medium "," large","Xlarge" };
-
+    char gridOptions[][8] = { "Small","Medium ","Large","X-Large" };
+    glColor3d(0.55, 0.2, 0.3);
     // for the first grid option
     // 230 and 420
-    drawStrokeText(gridOptions[0], 232, 436, 4, 5, 0.25, 0.25);
+    drawStrokeText(gridOptions[0], 255, 436, 4, 5, 0.25, 0.25);
 
     // for the second grid option
     // 350 and 420
-    drawStrokeText(gridOptions[1], 352, 436, 4, 7, 0.25, 0.25);
+    drawStrokeText(gridOptions[1], 400, 436, 4, 7, 0.25, 0.25);
 
     // for the third grid option
     // 470 and 420
-    drawStrokeText(gridOptions[2], 472, 436, 4, 7, 0.25, 0.25);
+    drawStrokeText(gridOptions[2], 590, 436, 4, 7, 0.25, 0.25);
 
     // for the fourth grid option
     // 590 and 420
-    drawStrokeText(gridOptions[3], 592, 436, 4, 6, 0.25, 0.25);
+    drawStrokeText(gridOptions[3], 730, 436, 4, 7, 0.25, 0.25);
 
 
 
@@ -242,7 +242,7 @@ void drawingText() {
     // for players
     // 325 and 347 -> the coordinates for the left andar wala angular part
     char str2[] = "Players";
-    glColor3d(0.0, 0.2, 0.8);
+    glColor3d(0.0, 0.2, 0.6);
     drawStrokeText(str2, 328, 335, 5, 7, 0.32, 0.32);
 
     //player name fields
@@ -252,25 +252,25 @@ void drawingText() {
     // first box
     // 100 and 200
     glColor3d(0.6, 0.2, 0.4);
-    drawStrokeText(playernumber[0], 102, 222, 4, 9, 0.2, 0.2);
+    drawStrokeText(playernumber[0], 127, 222, 4, 9, 0.2, 0.2);
 
     // second box
     // 495 and 200
-    drawStrokeText(playernumber[1], 497, 222, 4, 9, 0.2, 0.2);
+    drawStrokeText(playernumber[1], 522, 222, 4, 9, 0.2, 0.2);
 
     // third box
     // 100 and 67
-    drawStrokeText(playernumber[2], 102, 89, 4, 9, 0.2, 0.2);
+    drawStrokeText(playernumber[2], 127, 89, 4, 9, 0.2, 0.2);
 
     // fourth box
     // 495 and 67
-    drawStrokeText(playernumber[3], 497, 89, 4, 9, 0.2, 0.2);
+    drawStrokeText(playernumber[3], 522, 89, 4, 9, 0.2, 0.2);
 
 
     // Start
     // 800 and 250 -> left corner of the start button
     char str3[] = "START";
-    glColor3d(1.0, 1.0, 1.0);
+    glColor3d(0.6, 0.8, 0.9);
     drawStrokeText(str3, 820, 230, 7, 5, 0.4, 0.4);
 
 
@@ -322,7 +322,7 @@ void display_option() {
 void Interface1() {
 
     //COORDINATES ORDER:   Top Left --> Bottom Left --> Bottom Right --> Top Right
-
+    /*
     // TOP BOX FOR HEADING/NAME/TITLE
     //OUTER BOX
     glColor3d(0.2, 0.2, 0.5);// Set line segment color as glColor3f(R,G,B)
@@ -332,6 +332,7 @@ void Interface1() {
     glVertex2i(600, 580);
     glVertex2i(550, 713);
     glEnd();
+
     //INNER BOX
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
@@ -373,76 +374,76 @@ void Interface1() {
 
     // 'GRID: ' BOX
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     glVertex2i(85, 493);
     glVertex2i(85, 407);
     glVertex2i(200, 407);
     glVertex2i(200, 493);
     glEnd();
-
+    */
     // GRID OPTIONS' BOXES
-
+    glLineWidth(3);
     // OPTION NO. #01
     glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     glVertex2i(230, 480);
     glVertex2i(230, 420);
-    glVertex2i(330, 420);
-    glVertex2i(330, 480);
+    glVertex2i(360, 420);
+    glVertex2i(360, 480);
     glEnd();
 
     Cord[0][0] = 230;
     Cord[0][1] = 420;
-    Cord[0][2] = 330;
+    Cord[0][2] = 360;
     Cord[0][3] = 480;
 
     // OPTION NO. #02
     glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
-    glVertex2i(350, 480);
-    glVertex2i(350, 420);
-    glVertex2i(450, 420);
-    glVertex2i(450, 480);
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(380, 480);
+    glVertex2i(380, 420);
+    glVertex2i(540, 420);
+    glVertex2i(540, 480);
     glEnd();
 
-    Cord[1][0] = 350;
+    Cord[1][0] = 380;
     Cord[1][1] = 420;
-    Cord[1][2] = 450;
+    Cord[1][2] = 540;
     Cord[1][3] = 480;
 
     // OPTION NO. #03
     glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
-    glVertex2i(470, 480);
-    glVertex2i(470, 420);
-    glVertex2i(570, 420);
-    glVertex2i(570, 480);
-    glEnd();
-
-    Cord[2][0] = 470;
-    Cord[2][1] = 420;
-    Cord[2][2] = 570;
-    Cord[2][3] = 480;
-
-    // OPTION NO. #04
-    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
-    glVertex2i(590, 480);
-    glVertex2i(590, 420);
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(560, 480);
+    glVertex2i(560, 420);
     glVertex2i(690, 420);
     glVertex2i(690, 480);
     glEnd();
 
-    Cord[3][0] = 590;
+    Cord[2][0] = 560;
+    Cord[2][1] = 420;
+    Cord[2][2] = 690;
+    Cord[2][3] = 480;
+
+    // OPTION NO. #04
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(710, 480);
+    glVertex2i(710, 420);
+    glVertex2i(870, 420);
+    glVertex2i(870, 480);
+    glEnd();
+
+    Cord[3][0] = 710;
     Cord[3][1] = 420;
-    Cord[3][2] = 690;
+    Cord[3][2] = 870;
     Cord[3][3] = 480;
 
 
     // PLAYER SELECTION:
     // "PLAYERS" TITLE
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     glVertex2i(470, 347);
     glVertex2i(495, 380);
     glVertex2i(300, 380);
@@ -513,16 +514,16 @@ void Interface1() {
     // START BUTTON
     glBegin(GL_POLYGON);
 
-    glColor3d(0.0, 0.0, 1.0);
+    glColor3d(0.1, 0.1, 0.1);
     glVertex2i(900, 350);
 
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
     glVertex2i(800, 250);
 
-    glColor3f(0.0, 1.0, 0.0);
+    glColor3f(0.3, 0.3, 0.3);
     glVertex2i(900, 150);
 
-    glColor3f(1.0, 0.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
     glVertex2i(1000, 250);
     glEnd();
 
@@ -532,7 +533,8 @@ void Interface1() {
     Cord[8][3] = 350;
 }
 
-void Interface2() {
+void Interface2()
+{
     if (size == 4) {
         yg = 60;
         xg = 80;
