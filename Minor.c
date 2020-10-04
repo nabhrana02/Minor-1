@@ -21,6 +21,7 @@ void init();
 void drawingText();
 void drawStrokeText(char string[], int x, int y, int linewidth, int length, double scaleA, double scaleB);
 void Interface1();
+void Interface2();
 void display();
 void display_option();
 
@@ -66,7 +67,7 @@ void mouse(int button, int state, int x, int y)
         xi = Input[0];
         Input[1] = 720 - y;
         yi = Input[1];
-     }
+    }
 
     }
 
@@ -81,8 +82,8 @@ void display() {
     // clear the buffer
 
         // main interface function by OM with all the shapes
-    if(Set_Interface == 1)
-        {
+    if (Set_Interface == 1)
+    {
         Interface1();
         // text function by SHASHANK to draw the text on the screen
         drawingText();
@@ -99,14 +100,14 @@ void display() {
         glFlush();
     }
 
-    if(Set_Interface == 2)
+    if (Set_Interface == 2)
     {
         glClear(GL_COLOR_BUFFER_BIT);
         glFlush();
 
     }
     glFlush();
-    }
+}
 
 
 
@@ -138,7 +139,7 @@ void Process() {
 
 
     for (int i = 0; i < 4; i++) {
-        if (First == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi<Cord[i][3]) {
+        if (First == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi < Cord[i][3]) {
             for (int j = 0; j < 4; j++) {
                 Selected1[j] = Cord[i][j];
             }
@@ -146,7 +147,7 @@ void Process() {
         }
     }
     for (int i = 4; i < 8; i++) {
-        if (Second == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi<Cord[i][3]) {
+        if (Second == false && xi > Cord[i][0] && xi < Cord[i][2] && yi>Cord[i][1] && yi < Cord[i][3]) {
             for (int j = 0; j < 4; j++) {
                 Selected2[j] = Cord[i][j];
             }
@@ -154,7 +155,7 @@ void Process() {
         }
     }
 
-    if ( First == true && Second == true && xi > Cord[8][0] && xi < Cord[8][2] && yi > Cord[8][1] && yi < Cord[8][3]) {
+    if (First == true && Second == true && xi > Cord[8][0] && xi < Cord[8][2] && yi > Cord[8][1] && yi < Cord[8][3]) {
         Set_Interface = 2;
 
     }
@@ -366,9 +367,9 @@ void Interface1() {
     glEnd();
 
     Cord[0][0] = 230;
-    Cord[0][1] =  420 ;
-    Cord[0][2] =  330 ;
-    Cord[0][3] =  480 ;
+    Cord[0][1] = 420;
+    Cord[0][2] = 330;
+    Cord[0][3] = 480;
 
     // OPTION NO. #02
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -379,10 +380,10 @@ void Interface1() {
     glVertex2i(450, 480);
     glEnd();
 
-    Cord[1][0] =  350 ;
-    Cord[1][1] =  420 ;
-    Cord[1][2] =  450 ;
-    Cord[1][3] =  480 ;
+    Cord[1][0] = 350;
+    Cord[1][1] = 420;
+    Cord[1][2] = 450;
+    Cord[1][3] = 480;
 
     // OPTION NO. #03
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -393,10 +394,10 @@ void Interface1() {
     glVertex2i(570, 480);
     glEnd();
 
-    Cord[2][0] =  470 ;
-    Cord[2][1] =  420 ;
-    Cord[2][2] =  570 ;
-    Cord[2][3] =  480 ;
+    Cord[2][0] = 470;
+    Cord[2][1] = 420;
+    Cord[2][2] = 570;
+    Cord[2][3] = 480;
 
     // OPTION NO. #04
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
@@ -407,10 +408,10 @@ void Interface1() {
     glVertex2i(690, 480);
     glEnd();
 
-    Cord[3][0] =  590 ;
-    Cord[3][1] =  420 ;
-    Cord[3][2] =  690 ;
-    Cord[3][3] =  480 ;
+    Cord[3][0] = 590;
+    Cord[3][1] = 420;
+    Cord[3][2] = 690;
+    Cord[3][3] = 480;
 
 
     // PLAYER SELECTION:
@@ -435,10 +436,10 @@ void Interface1() {
     glVertex2i(300, 133);
     glEnd();
 
-    Cord[6][0] =  100 ;
-    Cord[6][1] =  67 ;
-    Cord[6][2] =  300 ;
-    Cord[6][3] =  133 ;
+    Cord[6][0] = 100;
+    Cord[6][1] = 67;
+    Cord[6][2] = 300;
+    Cord[6][3] = 133;
 
     // Player #01  ( TOP LEFT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -449,10 +450,10 @@ void Interface1() {
     glVertex2i(300, 267);
     glEnd();
 
-    Cord[4][0] = 100 ;
-    Cord[4][1] =  200 ;
-    Cord[4][2] =  300 ;
-    Cord[4][3] =  267;
+    Cord[4][0] = 100;
+    Cord[4][1] = 200;
+    Cord[4][2] = 300;
+    Cord[4][3] = 267;
 
     // Player #04  ( BOTTOM RIGHT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -464,10 +465,10 @@ void Interface1() {
     glEnd();
 
 
-    Cord[7][0] =  495 ;
-    Cord[7][1] =  67 ;
-    Cord[7][2] =  695 ;
-    Cord[7][3] =  133 ;
+    Cord[7][0] = 495;
+    Cord[7][1] = 67;
+    Cord[7][2] = 695;
+    Cord[7][3] = 133;
 
     // Player #02  ( TOP RIGHT )
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
@@ -478,10 +479,10 @@ void Interface1() {
     glVertex2i(695, 267);
     glEnd();
 
-    Cord[5][0] =  495 ;
-    Cord[5][1] =  200 ;
-    Cord[5][2] =  695 ;
-    Cord[5][3] =  267 ;
+    Cord[5][0] = 495;
+    Cord[5][1] = 200;
+    Cord[5][2] = 695;
+    Cord[5][3] = 267;
 
 
     // START BUTTON
@@ -500,8 +501,85 @@ void Interface1() {
     glVertex2i(1000, 250);
     glEnd();
 
-    Cord[8][0] =  800 ;
-    Cord[8][1] =  150 ;
-    Cord[8][2] =  1000;
-    Cord[8][3] =  350 ;
+    Cord[8][0] = 800;
+    Cord[8][1] = 150;
+    Cord[8][2] = 1000;
+    Cord[8][3] = 350;
+}
+
+
+void Interface2() 
+{
+    if (size == 4) {
+        yg = 60;
+        xg = 80;
+        xmax = 840;
+        ymax = 600;
+        total = 1;
+    }
+    if (size == 3) {
+        yg = 65;
+        xg = 85;
+        ymax = 585;
+        xmax = 765;
+        total = 64;
+    }
+    if (size == 2) {
+        yg = 70;
+        xg = 95;
+        xmax = 800;
+        ymax = 600;
+        total = 49;
+    }
+    if (size == 1) {
+        yg = 80;
+        ymax = 500;
+        xg = 110;
+        xmax = 660;
+        total = 25;
+    }
+
+    int k = 0;
+    for (int i = xg; i <= xmax; i = i + xg) {
+
+        for (int j = yg; j <= ymax; j = j + yg) {
+
+            glPointSize(12.0);
+            glColor3d(1.0, 1.0, 1.0);
+            glBegin(GL_POINTS);
+            glVertex2f(i, j);
+            glEnd();
+            if (j + yg <= ymax) {
+                LineCord[k][0] = i;
+                LineCord[k][1] = j;
+                LineCord[k][2] = i;
+                LineCord[k][3] = j + yg;
+
+
+                glColor3d(0.1, 0.1, 0.1);
+                glLineWidth(10.0);
+                glBegin(GL_LINES);
+                glVertex2f(LineCord[k][0], LineCord[k][1] + 10);
+                glVertex2f(LineCord[k][2], LineCord[k][3] - 10);
+                glEnd();
+                k = k + 1;
+            }
+            if (i + xg <= xmax) {
+                LineCord[k][0] = i;
+                LineCord[k][1] = j;
+                LineCord[k][2] = i + xg;
+                LineCord[k][3] = j;
+
+
+                glColor3d(0.1, 0.1, 0.1);
+                glLineWidth(10.0);
+                glBegin(GL_LINES);
+                glVertex2f(LineCord[k][0] + 10, LineCord[k][1]);
+                glVertex2f(LineCord[k][2] - 10, LineCord[k][3]);
+                glEnd();
+                k = k + 1;
+            }
+
+        }
+    }
 }
