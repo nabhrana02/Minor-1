@@ -8,12 +8,28 @@ double Cord[9][4];
 double Selected1[4];
 double Selected2[4];
 int Set_Interface = 1;
+int Call_I2 = 0;
 int xi;
 int  yi;
+int players;
 bool First = false, Second = false;
+double LineCord[200][4];
+double SelOption[200][4];
+double Points[90][4];
+int n = 0, q = 0;
+bool top1, top2, bottom1, bottom2, ver1, ver2, left1, left2,right1, right2, hor1, hor2;
+int count[4];
+int player = 0;
+int point;
+double colors[4][3] = { {1.0, 0.0, 0.0},{0.0,1.0,0.0},{0.0,0.0,1.0},{0.2,0.5,0.8} };
+int Playcolor[90];
+int size, xg, yg, xmax, ymax;
+int total;
+
 
 
 //Defining all funcitons.
+void Process2();
 void mouse(int button, int state, int x, int y);
 void Process();
 void reshaping(int w, int h);
@@ -32,7 +48,7 @@ int main(int argc, char** argv) {
     glutInitWindowPosition(0, 0);
     glutInitWindowSize(1080, 720);
 
-    glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
     glutCreateWindow("Box'em Up");
 
     glutDisplayFunc(display);
@@ -80,7 +96,6 @@ void mouse(int button, int state, int x, int y)
 // the main display function where all the other functions will be called
 void display() {
     // clear the buffer
-
         // main interface function by OM with all the shapes
     if (Set_Interface == 1)
     {
@@ -97,16 +112,24 @@ void display() {
         glVertex2d(xi, yi);
         glEnd();
         // put everything on the screen
-        glFlush();
+        glutSwapBuffers();
     }
 
-    if (Set_Interface == 2)
+    else if (Set_Interface == 2)
     {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glFlush();
+        if (Call_I2 < 2) {
+            glClear(GL_COLOR_BUFFER_BIT);
+            Interface2();
+            Call_I2 = Call_I2 + 1;
+        }
+        Process2();
+        glutSwapBuffers();
 
     }
-    glFlush();
+    else if (Set_Interface == 3) {
+        glClear(GL_COLOR_BUFFER_BIT);
+        glutSwapBuffers();
+    }
 }
 
 
@@ -126,7 +149,7 @@ void reshaping(int w, int h) {
 }
 
 void init() {
-    glClearColor(0.8, 0.8, 0.8, 1.0);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
@@ -144,6 +167,7 @@ void Process() {
                 Selected1[j] = Cord[i][j];
             }
             First = true;
+            size = i + 1;
         }
     }
     for (int i = 4; i < 8; i++) {
@@ -152,6 +176,7 @@ void Process() {
                 Selected2[j] = Cord[i][j];
             }
             Second = true;
+            players = i - 3;
         }
     }
 
@@ -191,7 +216,7 @@ void drawingText() {
     drawStrokeText(str1, 88, 430, 6, 4, 0.4, 0.4);
 
     // grid options
-    char gridOptions[][6] = { "10X10","12X12","15X15","18X18" };
+    char gridOptions[][8] = { "small","medium "," large","Xlarge" };
 
     // for the first grid option
     // 230 and 420
@@ -199,15 +224,15 @@ void drawingText() {
 
     // for the second grid option
     // 350 and 420
-    drawStrokeText(gridOptions[1], 352, 436, 4, 5, 0.25, 0.25);
+    drawStrokeText(gridOptions[1], 352, 436, 4, 7, 0.25, 0.25);
 
     // for the third grid option
     // 470 and 420
-    drawStrokeText(gridOptions[2], 472, 436, 4, 5, 0.25, 0.25);
+    drawStrokeText(gridOptions[2], 472, 436, 4, 7, 0.25, 0.25);
 
     // for the fourth grid option
     // 590 and 420
-    drawStrokeText(gridOptions[3], 592, 436, 4, 5, 0.25, 0.25);
+    drawStrokeText(gridOptions[3], 592, 436, 4, 6, 0.25, 0.25);
 
 
 
@@ -221,25 +246,25 @@ void drawingText() {
     drawStrokeText(str2, 328, 335, 5, 7, 0.32, 0.32);
 
     //player name fields
-    char playernumber[][5] = { "P1:", "P2:", "P3:", "P4:" };
+    char playernumber[][10] = { "1 Player", "2 players", "3 players", "4 players" };
 
 
     // first box
     // 100 and 200
     glColor3d(0.6, 0.2, 0.4);
-    drawStrokeText(playernumber[0], 102, 222, 3, 3, 0.2, 0.2);
+    drawStrokeText(playernumber[0], 102, 222, 4, 9, 0.2, 0.2);
 
     // second box
     // 495 and 200
-    drawStrokeText(playernumber[1], 497, 222, 3, 3, 0.2, 0.2);
+    drawStrokeText(playernumber[1], 497, 222, 4, 9, 0.2, 0.2);
 
     // third box
     // 100 and 67
-    drawStrokeText(playernumber[2], 102, 89, 3, 3, 0.2, 0.2);
+    drawStrokeText(playernumber[2], 102, 89, 4, 9, 0.2, 0.2);
 
     // fourth box
     // 495 and 67
-    drawStrokeText(playernumber[3], 497, 89, 3, 3, 0.2, 0.2);
+    drawStrokeText(playernumber[3], 497, 89, 4, 9, 0.2, 0.2);
 
 
     // Start
@@ -338,7 +363,7 @@ void Interface1() {
 
     //GRID OPTIONS
     // MAIN BIG BOX
-    glColor3d(0.2, 0.5, 0.2);// Set line segment color as glColor3f(R,G,B)
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(60, 500);
     glVertex2i(60, 400);
@@ -358,7 +383,7 @@ void Interface1() {
     // GRID OPTIONS' BOXES
 
     // OPTION NO. #01
-    glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(230, 480);
     glVertex2i(230, 420);
@@ -372,7 +397,7 @@ void Interface1() {
     Cord[0][3] = 480;
 
     // OPTION NO. #02
-    glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(350, 480);
     glVertex2i(350, 420);
@@ -386,7 +411,7 @@ void Interface1() {
     Cord[1][3] = 480;
 
     // OPTION NO. #03
-    glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(470, 480);
     glVertex2i(470, 420);
@@ -400,7 +425,7 @@ void Interface1() {
     Cord[2][3] = 480;
 
     // OPTION NO. #04
-    glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
+    glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
     glVertex2i(590, 480);
     glVertex2i(590, 420);
@@ -507,9 +532,7 @@ void Interface1() {
     Cord[8][3] = 350;
 }
 
-
-void Interface2() 
-{
+void Interface2() {
     if (size == 4) {
         yg = 60;
         xg = 80;
@@ -759,7 +782,7 @@ void Process2() {
         glColor3d(0.9, 0.9, 0.9);
         glLineWidth(10.0);
         glBegin(GL_LINES);
-        glVertex2f(SelOption[m][0], SelOption[m][1]); 
+        glVertex2f(SelOption[m][0], SelOption[m][1]);
         glVertex2f(SelOption[m][2], SelOption[m][3]);
         glEnd();
     }
