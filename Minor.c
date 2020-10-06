@@ -30,7 +30,7 @@ int f = sizeof count / sizeof count[0];
 
 
 
-//Defining all funcitons.
+//Defining all funcitons
 void Process2();
 void mouse(int button, int state, int x, int y);
 void Process();
