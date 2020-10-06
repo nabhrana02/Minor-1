@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<stdbool.h>
 
 //Defining global variables.
@@ -25,6 +25,8 @@ double colors[4][3] = { {1.0, 0.0, 0.0},{0.0,1.0,0.0},{0.0,0.0,1.0},{0.2,0.5,0.8
 int Playcolor[90];
 int size, xg, yg, xmax, ymax;
 int total;
+int max;
+int f = sizeof count / sizeof count[0];
 
 
 
@@ -40,6 +42,10 @@ void Interface1();
 void Interface2();
 void display();
 void display_option();
+void Interface3();
+void Interface3Text();
+void tostring(char str[], int num);
+void Winner();
 
 
 int main(int argc, char** argv) {
@@ -127,7 +133,7 @@ void display() {
 
     }
     else if (Set_Interface == 3) {
-        glClear(GL_COLOR_BUFFER_BIT);
+        Interface3();
         glutSwapBuffers();
     }
 }
@@ -332,7 +338,6 @@ void Interface1() {
     glVertex2i(600, 580);
     glVertex2i(550, 713);
     glEnd();
-
     //INNER BOX
     glColor3d(0.99, 0.99, 0.99);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_POLYGON);
@@ -341,8 +346,6 @@ void Interface1() {
     glVertex2i(589, 587);
     glVertex2i(544, 707);
     glEnd();
-
-
     // LOGO SPACE
     // OUTER BOX
     glColor3d(0.2, 0.2, 0.5);// Set line segment color as glColor3f(R,G,B)
@@ -360,8 +363,6 @@ void Interface1() {
     glVertex2i(1059, 587);
     glVertex2i(1014, 707);
     glEnd();
-
-
     //GRID OPTIONS
     // MAIN BIG BOX
     glColor3d(0.0, 0.0, 0.0);// Set line segment color as glColor3f(R,G,B)
@@ -371,7 +372,6 @@ void Interface1() {
     glVertex2i(735, 400);
     glVertex2i(735, 500);
     glEnd();
-
     // 'GRID: ' BOX
     glColor3d(1.0, 1.0, 1.0);// Set line segment color as glColor3f(R,G,B)
     glBegin(GL_LINE_LOOP);
@@ -797,4 +797,176 @@ void Process2() {
         glVertex2f(Points[m][0] + 7, Points[m][3] - 7);
         glEnd();
     }
+}
+
+void Interface3()
+{
+
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(20.0);
+
+    glBegin(GL_POLYGON);
+
+    glVertex2i(200, 350);
+    glVertex2i(550, 350);
+    glVertex2i(550, 50);
+    glVertex2i(200, 50);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+
+    glVertex2i(200, 550);
+    glVertex2i(550, 550);
+    glVertex2i(550, 400);
+    glVertex2i(200, 400);
+    glEnd();
+
+    glBegin(GL_LINES);
+
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex2i(200, 300);
+    glVertex2i(550, 300);
+    glEnd();
+
+    glBegin(GL_LINES);
+
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex2i(350, 350);
+    glVertex2i(350, 50);
+    glEnd();
+    Interface3Text();
+    Winner();
+
+}
+
+void Winner() {
+    int i;
+
+    int max = count[0];
+    for (i = 0; i < 4; i++)
+    {
+        if (count[i] > max)
+        {
+            max = count[i];
+        }
+
+    }
+    char str13[3];
+    tostring(str13, max);
+    glColor3f(0.0, 0.8, 0.0);
+    drawStrokeText(str13, 400, 450, 3, 10, 0.2, 0.2);
+    if (count[0] == max)
+    {
+        char str11[] = "player1";
+        glColor3f(0.0, 0.1, 0.0);
+        drawStrokeText(str11, 400, 500, 3, 10, 0.2, 0.2);
+
+    }
+    else if (count[1] == max)
+    {
+        char str12[] = "player2";
+        glColor3f(0.0, 1.0, 0.0);
+        drawStrokeText(str12, 400, 500, 3, 10, 0.2, 0.2);
+    }
+    else if (count[2] == max)
+    {
+        char str13[] = "player3";
+        glColor3f(0.0, 1.0, 0.0);
+        drawStrokeText(str13, 400, 500, 3, 10, 0.2, 0.2);
+
+    }
+    else if (count[3] == max)
+    {
+        char str14[] = "player4";
+        glColor3f(0.0, 1.0, 0.0);
+        drawStrokeText(str14, 400, 500, 3, 10, 0.2, 0.2);
+    }
+}
+
+void tostring(char str[], int num)
+{
+    int i, rem, len = 0;
+    f = num;
+    while (f != 0)
+    {
+        len++;
+        f /= 10;
+    }
+    for (i = 0; i < len; i++)
+    {
+        rem = num % 10;
+        num = num / 10;
+        str[len - (i + 1)] = rem + '0';
+    }
+
+}
+
+void Interface3Text()
+{
+    //converting the scores into integer
+    char str6[2];
+    tostring(str6, count[0]);
+
+    char str7[3];
+    tostring(str7, count[1]);
+
+    char str8[3];
+    tostring(str8, count[2]);
+
+    char str9[4];
+    tostring(str9, count[3]);
+
+
+
+
+
+
+
+    char str[] = "Names";
+    glColor3f(0.0, 0.0, 0.0);
+    drawStrokeText(str, 225, 320, 3, 5, 0.2, 0.2);
+
+    char str1[] = "Scores";
+    glColor3f(0.0, 0.0, 0.0);
+    drawStrokeText(str1, 400, 320, 3, 6, 0.2, 0.2);
+
+    char str2[] = "Player1";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str2, 225, 250, 3, 10, 0.2, 0.2);
+
+    char str3[] = "Player2";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str3, 225, 200, 3, 10, 0.2, 0.2);
+
+    char str4[] = "Player3";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str4, 225, 150, 3, 10, 0.2, 0.2);
+
+    char str5[] = "Player4";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str5, 225, 100, 3, 10, 0.2, 0.2);
+
+    char str10[] = "WinnerName:";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str10, 225, 500, 3, 15, 0.2, 0.2);
+
+    char str11[] = "Winnerscore:";
+    glColor3f(0.8, 0.0, 0.0);
+    drawStrokeText(str11, 225, 450, 3, 15, 0.2, 0.2);
+
+
+
+    //displaying the scores
+    glColor3f(0.0, 0.8, 0.0);
+    drawStrokeText(str6, 400, 250, 3, 10, 0.2, 0.2);
+
+    glColor3f(0.0, 0.8, 0.0);
+    drawStrokeText(str7, 400, 200, 3, 10, 0.2, 0.2);
+
+    glColor3f(0.0, 0.8, 0.0);
+    drawStrokeText(str8, 400, 150, 3, 10, 0.2, 0.2);
+
+    glColor3f(0.0, 0.8, 0.0);
+    drawStrokeText(str9, 400, 100, 3, 10, 0.2, 0.2);
 }
