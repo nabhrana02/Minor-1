@@ -309,16 +309,18 @@ void drawStrokeText(char string[], int x, int y, int linewidth, int length, doub
 void display_option() {
 
     glColor3f(1.0, 1.0, 1.0);
-    glBegin(GL_POLYGON);
-    glVertex2f((((Selected1[2] - Selected1[0]) / 2) - 14) + Selected1[0], Selected1[3] + 17);
-    glVertex2f((((Selected1[2] - Selected1[0]) / 2) + 14) + Selected1[0], Selected1[3] + 17);
-    glVertex2f(((Selected1[2] - Selected1[0]) / 2) + Selected1[0], Selected1[3] + 5);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(Selected1[0], Selected1[3]);
+    glVertex2f(Selected1[2], Selected1[3]);
+    glVertex2f(Selected1[2], Selected1[1]);
+    glVertex2f(Selected1[0], Selected1[1]);
     glEnd();
 
-    glBegin(GL_POLYGON);
-    glVertex2f((((Selected2[2] - Selected2[0]) / 2) - 14) + Selected2[0], Selected2[3] + 17);
-    glVertex2f((((Selected2[2] - Selected2[0]) / 2) + 14) + Selected2[0], Selected2[3] + 17);
-    glVertex2f(((Selected2[2] - Selected2[0]) / 2) + Selected2[0], Selected2[3] + 5);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(Selected2[0], Selected2[3]);
+    glVertex2f(Selected2[2], Selected2[3]);
+    glVertex2f(Selected2[2], Selected2[1]);
+    glVertex2f(Selected2[0], Selected2[1]);
     glEnd();
 
 }
