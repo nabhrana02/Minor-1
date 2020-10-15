@@ -488,7 +488,7 @@ void Interface2()
         xg = 80;
         xmax = 840;
         ymax = 600;
-        total = 1;
+        total = 81;
     }
     if (size == 3) {
         yg = 65;
