@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<stdbool.h>
 
 //Defining global variables.
@@ -136,7 +136,6 @@ void display() {
         glutSwapBuffers();
     }
 }
-
 
 
 
@@ -687,7 +686,48 @@ void Process2() {
     hor2 = false;
     point = 0;
 
-    if (a < 15 && yi < ymax && xi < xmax) {
+    glColor3f(0.1, 0.5, 0.7);
+
+    if (player == 0) {
+        glColor3f(1.0, 1.0, 1.0);
+
+    }
+    glBegin(GL_POINTS);
+    glVertex2f(840, 410);
+    glEnd();
+
+    glColor3f(0.1, 0.5, 0.7);
+
+    if (player == 1) {
+        glColor3f(1.0, 1.0, 1.0);
+    }
+
+    glBegin(GL_POINTS);
+    glVertex2f(840, 370);
+    glEnd();
+
+    glColor3f(0.1, 0.5, 0.7);
+
+    if (player == 2) {
+        glColor3f(1.0, 1.0, 1.0);
+    }
+    glBegin(GL_POINTS);
+    glVertex2f(840, 330);
+    glEnd();
+
+    glColor3f(0.1, 0.5, 0.7);
+
+    if (player == 3) {
+        glColor3f(1.0, 1.0, 1.0);
+    }
+    glBegin(GL_POINTS);
+    glVertex2f(840, 290);
+    glEnd();
+
+    glColor3f(0.0, 0.0, 0.0);
+
+
+    if (a < 15 && yi < ymax && xi < xmax && xi>xg && yi>yg) {
         if (a < b && a < xg - b) {
             x1 = xi - b;
             y1 = yi - a;
@@ -698,7 +738,7 @@ void Process2() {
         }
 
     }
-    else if (a > 45 && yi < ymax && xi < xmax) {
+    else if (a > 45 && yi < ymax && xi < xmax && xi>xg && yi>yg) {
         if (yg - a < b && yg - a < xg - b) {
             x1 = xi - b;
             y1 = yi - a + yg;
@@ -709,7 +749,7 @@ void Process2() {
         }
 
     }
-    if (b < 20 && notyet == false && yi < ymax && xi < xmax) {
+    if (b < 20 && notyet == false && yi < ymax && xi < xmax && xi>xg && yi>yg) {
         if (b < a && b < yg - a) {
             x1 = xi - b;
             y1 = yi - a;
@@ -719,7 +759,7 @@ void Process2() {
         }
 
     }
-    else if (b > yg && notyet == false && yi < ymax && xi < xmax) {
+    else if (b > yg && notyet == false && yi < ymax && xi < xmax && xi>xg && yi>yg) {
         if (xg - b < a && 80 - b < yg - a) {
             x1 = xi - b + xg;
             y1 = yi - a;
@@ -833,6 +873,7 @@ void Process2() {
     }
 
 
+
     /*
     if (q == total) {
         Set_Interface = 3;
@@ -944,13 +985,13 @@ void Process2() {
             winy = 280;
         }
 
-        char w1[] = "M";
+        char w1[] = "W";
         glColor3f(1.0, 1.0, 0.0);
-        drawStrokeText(w1, 820, winy, 3, 2, 0.2, 0.2);
+        drawStrokeText(w1, 820 - 7, winy, 5, 2, 0.2, 0.2);
 
-        char w2[] = "A";
-        glColor3f(1.0, 7.0, 0.0);
-        drawStrokeText(w2, 820, winy, 3, 2, 0.2, 0.2);
+        char w2[] = "W";
+        glColor3f(1.0, 0.75, 0.0);
+        drawStrokeText(w2, 820 - 7, winy, 3, 2, 0.2, 0.2);
 
     }
 
