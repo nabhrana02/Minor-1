@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<GLUT/glut.h>
+#include<GL/glut.h>
 #include<stdbool.h>
 
 //Defining global variables.
@@ -562,7 +562,7 @@ void Interface2()
 {
     char title[] = "Box 'em Up";
     glColor3f(0.5, 0.0, 0.0);
-    drawStrokeText(title, 275, 630, 5, 10, 0.67, 0.67);
+    drawStrokeText(title, 275, 630, 10, 10, 0.67, 0.67);
     int temp = 1;
 
     if (size == 4) {
@@ -987,11 +987,11 @@ void Process2() {
 
         char w1[] = "W";
         glColor3f(1.0, 1.0, 0.0);
-        drawStrokeText(w1, 820 - 7, winy, 5, 2, 0.2, 0.2);
+        drawStrokeText(w1, 805, winy, 7, 2, 0.2, 0.2);
 
         char w2[] = "W";
-        glColor3f(1.0, 0.75, 0.0);
-        drawStrokeText(w2, 820 - 7, winy, 3, 2, 0.2, 0.2);
+        glColor3f(1.0, 0.55, 0.0);
+        drawStrokeText(w2, 805, winy, 4, 2, 0.2, 0.2);
 
     }
 
